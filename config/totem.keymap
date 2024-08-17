@@ -53,6 +53,29 @@
 
     combos { compatible = "zmk,combos"; };
 
+    macros {
+        search: search {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COLON &kp PRCNT &kp S &kp FSLH>;
+            label = "SEARCH";
+        };
+
+        arrow: arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR &kp EQUAL &kp GT &kp LEFT_BRACE &kp RIGHT_BRACE>;
+            label = "ARROW";
+        };
+
+        interpolation: interpolation {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DLLR &kp LEFT_BRACE &kp RBRC &kp RIGHT &kp RIGHT>;
+            label = "INTERPOLATION";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -69,53 +92,21 @@
         Nav {
             label = "Nav";
             bindings = <
-              &kp TILDE       &trans     &kp UP_ARROW       &trans     &kp LEFT_BRACKET    &kp RIGHT_BRACKET  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0
-              &kp LEFT_SHIFT  &kp GRAVE  &kp DOUBLE_QUOTES  &kp EQUAL  &kp LEFT_BRACE      &kp RIGHT_BRACE    &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp MINUS
-&kp LEFT_ALT  &kp LEFT_WIN    &kp MINUS  &kp MINUS          &kp UNDER  &kp LPAR            &kp RPAR           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_MULTIPLY  &kp PLUS
-                                         &trans             &trans     &trans              &trans             &trans        &kp DOT
+        &kp EXCLAMATION  &kp AT_SIGN   &kp HASH          &kp DOLLAR      &kp PERCENT    &kp CARET     &kp AMPERSAND    &kp ASTERISK       &kp NUMBER_9  &kp DELETE
+        &kp NUMBER_1     &kp NUMBER_2  &kp NUMBER_3      &kp NUMBER_4    &kp N5         &kp NUMBER_6  &kp N7           &kp N8             &kp N9        &kp SEMICOLON
+&kp N0  &kp LEFT_WIN     &kp PLUS      &kp LEFT_BRACKET  &kp LEFT_BRACE  &kp LPAR       &kp RPAR      &kp RIGHT_BRACE  &kp RIGHT_BRACKET  &kp PIPE      &kp LGUI       &kp PLUS
+                                       &trans            &trans          &trans         &trans        &trans           &kp QUESTION
             >;
         };
 
         Sym {
             label = "Sym";
             bindings = <
-        &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT    &kp CARET  &kp AMPERSAND  &kp KP_ASTERISK  &kp SQT  &kp DQT
-        &trans    &trans  &trans    &trans      &trans         &trans     &trans         &trans           &trans   &trans
-&trans  &trans    &trans  &trans    &trans      &trans         &kp UNDER  &kp EQUAL      &trans           &trans   &kp SLASH  &kp HOME
-                          &trans    &trans      &trans         &trans     &trans         &trans
+            &kp F1            &kp F2            &kp F3            &kp F4            &kp F5               &kp F6     &kp F7     &kp F8        &kp F9     &kp F10
+            &kp LA(NUMBER_4)  &kp LA(NUMBER_3)  &kp LA(NUMBER_2)  &kp LA(NUMBER_1)  &kp QUESTION         &kp LEFT   &kp DOWN   &kp UP_ARROW  &kp RIGHT  &kp F11
+&kp LA(N5)  &trans            &kp EQUAL         &interpolation    &kp GRAVE         &kp DOUBLE_QUOTES    &kp MINUS  &kp UNDER  &search       &kp PIPE   &kp BACKSLASH  &kp F12
+                                                &trans            &trans            &trans               &trans     &trans     &kp EQUAL
             >;
-        };
-
-        Fun {
-            label = "Fun";
-            bindings = <
-        &bootloader  &trans  &trans  &trans  &to 4     &trans  &trans  &trans  &kp END  &kp F1
-        &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans   &kp F10
-&trans  &trans       &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans   &kp F20  &kp F7
-                             &trans  &trans  &trans    &trans  &trans  &trans
-            >;
-        };
-
-        Gaming {
-            bindings = <
-            &kp Z           &kp X  &kp C      &kp V         &sl 5     &trans  &trans  &trans  &trans  &trans
-            &kp TAB         &kp Q  &kp W      &kp E         &kp R     &trans  &trans  &trans  &trans  &trans
-&kp ESCAPE  &kp LEFT_SHIFT  &kp A  &kp S      &kp D         &kp F     &trans  &trans  &trans  &trans  &trans  &trans
-                                   &kp LCTRL  &kp LEFT_ALT  &trans    &trans  &trans  &trans
-            >;
-
-            label = "Gaming";
-        };
-
-        Gaming+ {
-            bindings = <
-        &kp F10  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp T     &kp RA(RC(Y))  &kp RA(RC(U))  &trans  &trans  &kp LC(RA(DEL))
-        &kp L    &kp O         &kp Y         &kp K         &kp G     &kp F5         &trans         &trans  &trans  &trans
-&trans  &to 0    &trans        &trans        &trans        &trans    &trans         &trans         &trans  &trans  &trans           &kp LA(F4)
-                               &kp J         &kp I         &kp M     &trans         &trans         &trans
-            >;
-
-            label = "Gaming+";
         };
     };
 };
